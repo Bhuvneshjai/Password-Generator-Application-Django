@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   font-family: "Montserrat", sans-serif;
   color: #fff;
@@ -57,36 +58,33 @@ p {
   outline: none;
 }
 
-.form-group span {
-  font-size: 15px;
-  color: rgb(0, 173, 230);
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: 0 0;
-  cursor: text;
-  transition: all 0.2s ease;
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s, transform 0.3s;
+  transform-origin: left top;
 }
 
-.form-group span.border {
-  height: 2px;
-  width: 100%;
-  background: #fff;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
-.form-control:focus + span, .form-control:not(:placeholder-shown) + span {
-  color: #03023b; /* Updated color for focused state */
+.form-control:focus::placeholder,
+.form-control:not(:placeholder-shown)::placeholder {
+  color: transparent;
   transform: translateY(-1.5rem) scale(0.8);
 }
 
-.form-control:focus + span + .border, .form-control:not(:placeholder-shown) + span + .border {
-  transform: scaleX(1);
+.form-group label {
+  font-size: 15px;
+  color: rgb(0, 173, 230);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+  transform: translateY(-1.5rem) scale(0.8);
+  color: #03023b;
 }
 
 button {
@@ -111,12 +109,3 @@ button:hover {
   font-style: italic;
 }
 
-/* Adding focus effect for the form group */
-.form-group:focus-within span {
-  color: #03023b;
-  transform: translateY(-1.5rem) scale(0.8);
-}
-
-.form-group:focus-within .border {
-  transform: scaleX(1);
-}
