@@ -52,5 +52,8 @@ def password_generator(request, username):
         form = PasswordForm()
     return render(request, 'pages/password_generator.html', {'form': form, 'username': username})
 
+def result_password(request):
+    return render(request, 'pages/result_password.html')
+
 def logout(request):
     return redirect('home')
